@@ -101,8 +101,6 @@ class BookForm extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-  console.log("STATE", state);
-  console.log("PROPS", props);
   return {
     books: state.books,
   };

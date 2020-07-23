@@ -1,4 +1,5 @@
 import server from "../apis/jsonServer";
+import history from "../history";
 
 import {
   ADD_BOOK,
@@ -7,8 +8,6 @@ import {
   FETCH_ALL_BOOKS,
   SET_CURRENT_BOOK,
 } from "./variables";
-
-// import { v4 as uuid } from "uuid";
 
 // Book Actions
 // ----------------------------------------------------------
@@ -26,6 +25,7 @@ export const addBook = (formValues) => {
 export const removeBook = (id) => async (dispatch) => {
   await server.delete(`/books/${id}`);
   dispatch({ type: REMOVE_BOOK, payload: id });
+  history.push("/");
 };
 
 // EDIT_BOOK

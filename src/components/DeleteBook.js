@@ -3,9 +3,7 @@ import { connect } from "react-redux";
 import { setCurrentBook, removeBook } from "../actions";
 
 class DeleteBook extends Component {
-  componentDidMount() {
-    console.log(this.props);
-  }
+  componentDidMount() {}
   deleteBook = () => {
     this.props.removeBook(this.props.id);
   };

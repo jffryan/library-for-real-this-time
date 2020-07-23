@@ -18,24 +18,26 @@ import Header from "../components/Header";
 class AppRouter extends Component {
   render() {
     return (
-      <Router history={history}>
-        <div>
-          <Header />
-          <Switch>
-            <Route exact path="/" component={LibraryHomePage} />
-            <Route path="/books/create" component={CreateBookPage} />
-            <Route
-              path="/books/view/:id"
-              render={(props) => <DetailBookPage {...props} />}
-            />
-            <Route path="/books/edit/:id" component={EditBookPage} />
-            <Route path="/library" component={ViewBookshelfPage} />
-            <Route path="/statistics" component={StatisticsPage} />
-            <Route path="/help" component={HelpPage} />
-            <Route component={PageNotFound} />
-          </Switch>
-        </div>
-      </Router>
+      <div>
+        <Router history={history}>
+          <div>
+            <Header />
+            <Switch>
+              <Route exact path="/" component={LibraryHomePage} />
+              <Route exact path="/books/create" component={CreateBookPage} />
+              <Route
+                path="/books/view/:id"
+                render={(props) => <DetailBookPage {...props} />}
+              />
+              <Route exact path="/books/edit/:id" component={EditBookPage} />
+              <Route exact path="/library" component={ViewBookshelfPage} />
+              <Route exact path="/statistics" component={StatisticsPage} />
+              <Route exact path="/help" component={HelpPage} />
+              <Route component={PageNotFound} />
+            </Switch>
+          </div>
+        </Router>
+      </div>
     );
   }
 }
