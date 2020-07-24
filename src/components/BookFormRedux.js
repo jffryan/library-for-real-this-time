@@ -26,6 +26,13 @@ class BookFormRedux extends Component {
     }
   }
 
+  // Clears form values
+  // ***************THIS DOESN'T WORK WITH EDIT AND I SHOULD FIGURE OUT HOW TO FIX
+  resetForm = () => {
+    this.props.reset();
+    this.props.untouch();
+  };
+
   // FormRedux function to make sure our fields are rendering text inputs correctly
   // Arrow function to bind 'this' context
   renderTextInput = ({ input, label, meta }) => {
@@ -39,23 +46,25 @@ class BookFormRedux extends Component {
   };
 
   onSubmit = (formValues) => {
-    this.props.addBook(formValues);
+    this.props.onSubmit({ formValues, resetForm: this.resetForm });
   };
 
   render() {
     const { renderTextInput, onSubmit } = this;
     return (
-      <form onSubmit={this.props.handleSubmit(onSubmit)}>
-        <Field name="title" component={renderTextInput} label="Title: " />
-        <Field name="author" component={renderTextInput} label="Author: " />
-        <Field
-          name="pageCount"
-          component={renderTextInput}
-          label="Page Count: "
-          normalize={normalizePageCount}
-        />
-        <button>Submit</button>
-      </form>
+      <div>
+        <form onSubmit={this.props.handleSubmit(onSubmit)}>
+          <Field name="title" component={renderTextInput} label="Title: " />
+          <Field name="author" component={renderTextInput} label="Author: " />
+          <Field
+            name="pageCount"
+            component={renderTextInput}
+            label="Page Count: "
+            normalize={normalizePageCount}
+          />
+          <button>Submit</button>
+        </form>
+      </div>
     );
   }
 }
@@ -82,4 +91,4 @@ const formWrapped = reduxForm({
   validate: validate,
 })(BookFormRedux);
 
-export default connect(null, { addBook })(formWrapped);
+export default connect(null)(formWrapped);

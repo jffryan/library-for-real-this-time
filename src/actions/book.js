@@ -33,6 +33,7 @@ export const editBook = (id, formValues) => async (dispatch) => {
   const response = await server.put(`/books/${id}`, formValues);
 
   dispatch({ type: EDIT_BOOK, payload: response.data });
+  // history.push("/");
 };
 
 // FETCH_ALL_BOOKS
