@@ -38,11 +38,13 @@ class CreateBookPage extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Add Book</h1>
-        {this.state.formSubmit && <p>Book added successfully</p>}
-        <BookFormRedux onSubmit={this.onSubmit} />
-      </div>
+      <section>
+        <div className="container">
+          <h1>Add Book</h1>
+          {this.state.formSubmit && <p>Book added successfully</p>}
+          <BookFormRedux onSubmit={this.onSubmit} />
+        </div>
+      </section>
     );
   }
 }

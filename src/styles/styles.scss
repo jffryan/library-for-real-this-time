@@ -1,2 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto&display=swap");
+
 @import "./base/settings";
 @import "./base/base";
+@import "./base/container";
+@import "./components/Header";
+@import "./components/InputTag";
+@import "./components/Library";
+@import "./pages/LibraryHomePage";

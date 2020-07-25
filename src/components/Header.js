@@ -3,25 +3,27 @@ import { Link, NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div>
-      <Link to="/">
-        <h1>Library</h1>
-      </Link>
-      <div>
-        <NavLink to="/books/create" activeClassName="is-active">
-          Create
-        </NavLink>
-        <NavLink to="/library" activeClassName="is-active">
-          Library
-        </NavLink>
-        <NavLink to="/statistics" activeClassName="is-active">
-          Statistics
-        </NavLink>
-        <NavLink to="/help" activeClassName="is-active">
-          Help
-        </NavLink>
+    <nav className="primary-nav">
+      <div className="container">
+        <Link to="/">
+          <h1>Library</h1>
+        </Link>
+        <div className="primary-nav__list">
+          <NavLink to="/books/create" activeClassName="is-active">
+            Create
+          </NavLink>
+          <NavLink to="/library" activeClassName="is-active">
+            Bookshelves
+          </NavLink>
+          <NavLink to="/statistics" activeClassName="is-active">
+            Statistics
+          </NavLink>
+          <NavLink to="/help" activeClassName="is-active">
+            Help
+          </NavLink>
+        </div>
       </div>
-    </div>
+    </nav>
   );
 };
 

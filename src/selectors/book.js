@@ -23,3 +23,11 @@ export const getVisibleBooks = (books, filters) => {
       }
     });
 };
+
+export const getBookshelfBooks = (books, filters) => {
+  const { currentBookshelf } = filters;
+  const shelf = Object.values(books).filter((book) => {
+    return book.type.toLowerCase() === currentBookshelf.toLowerCase();
+  });
+  return shelf;
+};

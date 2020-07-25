@@ -3,21 +3,14 @@ import {
   SORT_BY_PAGE_COUNT,
   SORT_BY_AUTHOR,
   SORT_BY_TITLE,
+  SET_BOOKSHELF,
 } from "../actions/variables";
 
 // Filter Reducer
 // ----------------------------------------------------------
 
 const filtersReducerDefaultState = {
-  text: "",
-  author: "",
   sortBy: "title",
-  startDate: undefined,
-  endDate: undefined,
-  genre: [],
-  type: [],
-  readStatus: undefined,
-  currentBook: "",
 };
 
 const filtersReducer = (state = filtersReducerDefaultState, action) => {
@@ -41,6 +34,11 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
       return {
         ...state,
         sortBy: "title",
+      };
+    case SET_BOOKSHELF:
+      return {
+        ...state,
+        currentBookshelf: action.bookshelf,
       };
     default:
       return state;

@@ -1,0 +1,8 @@
+.library {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.library__book {
+  padding: $m-size 0;
+}

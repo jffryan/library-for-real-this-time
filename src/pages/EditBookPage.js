@@ -13,23 +13,30 @@ class EditBookPage extends Component {
     this.props.editBook(this.props.match.params.id, formValues);
   };
 
+  // *** Currently doesn't import genre array into the edit form ***
   render() {
     if (!this.props.book) {
       return <div>Loading...</div>;
     }
     return (
-      <div>
-        <h1>Edit Book</h1>
-        <BookFormRedux
-          initialValues={_.pick(
-            this.props.book,
-            "title",
-            "author",
-            "pageCount"
-          )}
-          onSubmit={this.onSubmit}
-        />
-      </div>
+      <section>
+        <div className="container">
+          <h1>Edit Book</h1>
+          <BookFormRedux
+            initialValues={_.pick(
+              this.props.book,
+              "title",
+              "author",
+              "pageCount",
+              "type",
+              "hasRead",
+              "dateRead",
+              "rating"
+            )}
+            onSubmit={this.onSubmit}
+          />
+        </div>
+      </section>
     );
   }
 }

@@ -1,25 +1,40 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import Book from "./Book";
-import { getVisibleBooks } from "../selectors/book";
-import { fetchAllBooks } from "../actions";
+import Book from "../components/Book";
+
+import { fetchAllBooks, setBookshelf } from "../actions/index";
+import { getBookshelfBooks } from "../selectors/book";
 
 class Bookshelf extends Component {
   componentDidMount() {
     this.props.fetchAllBooks();
   }
-  renderList() {
-    return this.props.books.map((book) => {
-      return <Book key={book.id} {...book} />;
-    });
+  componentWillUnmount() {
+    this.props.setBookshelf("");
   }
+
+  renderBookshelfBooks = () => {
+    if (this.props.currentBookshelf) {
+      return (
+        <div>
+          {getBookshelfBooks(this.props.books, this.props.filters).map(
+            (book) => {
+              return <Book key={book.id} {...book} />;
+            }
+          )}
+        </div>
+      );
+    } else {
+      return;
+    }
+  };
 
   render() {
     return (
       <div>
-        <h1>Bookshelf</h1>
-        <div>{this.renderList()}</div>
+        <h2>{this.props.currentBookshelf}</h2>
+        {this.renderBookshelfBooks()}
       </div>
     );
   }
@@ -27,8 +42,11 @@ class Bookshelf extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    books: getVisibleBooks(Object.values(state.books), state.filters),
+    filters: { ...state.filters },
+    books: { ...state.books },
   };
 };
 
-export default connect(mapStateToProps, { fetchAllBooks })(Bookshelf);
+export default connect(mapStateToProps, { fetchAllBooks, setBookshelf })(
+  Bookshelf
+);

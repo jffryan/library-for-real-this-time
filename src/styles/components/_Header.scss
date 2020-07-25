@@ -1,0 +1,27 @@
+.primary-nav > .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.primary-nav a {
+  text-decoration: none;
+}
+
+.primary-nav a:visited {
+  color: inherit;
+}
+
+.primary-nav a:hover {
+  color: $color-primary;
+}
+
+.primary-nav__list a {
+  margin: 0 1rem;
+  color: $color-offBlack;
+}
+
+.primary-nav a.is-active {
+  font-weight: bold;
+  color: $color-primary;
+}

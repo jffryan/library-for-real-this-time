@@ -13,6 +13,7 @@ import {
   sortByPageCount,
   sortByAuthor,
   sortByTitle,
+  setBookshelf,
 } from "./filters";
 
 // Export
@@ -28,4 +29,5 @@ export {
   sortByPageCount,
   sortByAuthor,
   sortByTitle,
+  setBookshelf,
 };
