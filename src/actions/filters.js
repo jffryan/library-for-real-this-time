@@ -3,6 +3,7 @@ import {
   SORT_BY_PAGE_COUNT,
   SORT_BY_AUTHOR,
   SORT_BY_TITLE,
+  SET_BOOKSHELF,
 } from "./variables";
 
 // import server from "../apis/jsonServer";
@@ -26,4 +27,10 @@ export const sortByAuthor = () => ({
 
 export const sortByTitle = () => ({
   type: SORT_BY_TITLE,
+});
+
+export const setBookshelf = (bookshelf, filterSource) => ({
+  type: SET_BOOKSHELF,
+  bookshelf,
+  filterSource,
 });

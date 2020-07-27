@@ -1,0 +1,36 @@
+*** Short term ***
+------------------
+-Toggle read vs unread
+-Have unread books contain a different class w/ conditionally rendered values
+    (Date read, rating, awards)
+
+*** Medium term ***
+-------------------
+-Implement genres as a tagging system
+    -In progress - tags component works but doesn't communicate with Redux
+-Datepicker
+-5 stars rating system
+
+*** Long term ***
+-----------------
+-Styling
+-Have suggested tags?
+-Figure out the best way to do book covers
+
+
+*** Issues ***
+--------------
+
+---BookFormRedux
+#01 Reset Form Values properly BookFormRedux (line 31)
+#02 InputTag component doesn't work with BookFormRedux (lines 69 - 79)
+#03 RenderGenreInput doesn't validate properly in the validate function (lines 82 - 107 && 153)
+#04 Uncheese onSubmit (110-113). Related to problem 1
+
+---InputTag
+#01 Need to pass in the input & spit out the values
+#02 Figure out how to store all tags & all genres
+#03 RemoveTag in current implementation is incompatible with reordering tags
+
+---GenerateGenreMasterlist
+#01 Buggy & causes 500 error (due to data structuring)

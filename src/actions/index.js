@@ -13,7 +13,9 @@ import {
   sortByPageCount,
   sortByAuthor,
   sortByTitle,
+  setBookshelf,
 } from "./filters";
+import { reduxGenerateGenreMasterList, pullGenreMasterlist } from "./config";
 
 // Export
 // ----------------------------------------------------------
@@ -28,4 +30,7 @@ export {
   sortByPageCount,
   sortByAuthor,
   sortByTitle,
+  setBookshelf,
+  reduxGenerateGenreMasterList,
+  pullGenreMasterlist,
 };

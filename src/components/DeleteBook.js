@@ -11,7 +11,9 @@ class DeleteBook extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.deleteBook}>Remove</button>
+        <button onClick={this.deleteBook} className="button button-warning">
+          Remove
+        </button>
       </div>
     );
   }
