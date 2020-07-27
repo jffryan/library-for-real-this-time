@@ -1,3 +1,3 @@
-const bookTypes = ["Paper", "Ebook", "Pirated", "Audio"];
+const bookFormats = ["Paper", "Ebook", "Pirated", "Audio"];
 
-export { bookTypes };
+export { bookFormats };

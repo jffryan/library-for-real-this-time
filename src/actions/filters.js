@@ -29,7 +29,8 @@ export const sortByTitle = () => ({
   type: SORT_BY_TITLE,
 });
 
-export const setBookshelf = (bookshelf) => ({
+export const setBookshelf = (bookshelf, filterSource) => ({
   type: SET_BOOKSHELF,
   bookshelf,
+  filterSource,
 });

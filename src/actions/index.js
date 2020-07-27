@@ -15,6 +15,7 @@ import {
   sortByTitle,
   setBookshelf,
 } from "./filters";
+import { reduxGenerateGenreMasterList, pullGenreMasterlist } from "./config";
 
 // Export
 // ----------------------------------------------------------
@@ -30,4 +31,6 @@ export {
   sortByAuthor,
   sortByTitle,
   setBookshelf,
+  reduxGenerateGenreMasterList,
+  pullGenreMasterlist,
 };

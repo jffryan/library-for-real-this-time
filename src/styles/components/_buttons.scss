@@ -1,0 +1,19 @@
+.button {
+  border: none;
+  display: inline-block;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  border-radius: 1rem;
+}
+
+.button-primary {
+  color: $color-offBlack;
+  background-color: #d4c2f2;
+}
+
+// This margin will cause problems later
+.button-warning {
+  color: $color-offBlack;
+  background-color: #f2dcc2;
+  margin-left: 2rem;
+}

@@ -7,7 +7,7 @@ import CreateBookPage from "../pages/CreateBookPage";
 import DetailBookPage from "../pages/DetailBookPage";
 import EditBookPage from "../pages/EditBookPage";
 import HelpPage from "../pages/HelpPage";
-import LibraryHomePage from "../pages/LibraryHomePage";
+import LandingPage from "../pages/LandingPage";
 import PageNotFound from "../pages/PageNotFound";
 import StatisticsPage from "../pages/StatisticsPage";
 import ViewBookshelfPage from "../pages/ViewBookshelfPage";
@@ -23,7 +23,7 @@ class AppRouter extends Component {
           <div>
             <Header />
             <Switch>
-              <Route exact path="/" component={LibraryHomePage} />
+              <Route exact path="/" component={LandingPage} />
               <Route exact path="/books/create" component={CreateBookPage} />
               <Route
                 path="/books/view/:id"

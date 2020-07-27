@@ -13,7 +13,6 @@ class EditBookPage extends Component {
     this.props.editBook(this.props.match.params.id, formValues);
   };
 
-  // *** Currently doesn't import genre array into the edit form ***
   render() {
     if (!this.props.book) {
       return <div>Loading...</div>;
@@ -29,6 +28,7 @@ class EditBookPage extends Component {
               "author",
               "pageCount",
               "type",
+              "genres",
               "hasRead",
               "dateRead",
               "rating"

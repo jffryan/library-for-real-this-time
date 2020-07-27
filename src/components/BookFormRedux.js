@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { Field, FieldArray, reduxForm, formValueSelector } from "redux-form";
 import { connect } from "react-redux";
 
-import { bookTypes } from "../config/bookConfig";
+import { bookFormats } from "../config/bookConfig";
 
 // REGEX to ensure that pageCount will always be numbers even though it's a text field
 const normalizePageCount = (value) => {
@@ -47,17 +48,17 @@ class BookFormRedux extends Component {
     );
   };
 
-  renderTypeSelect = ({ input, label, meta }) => {
+  renderFormatSelect = ({ input, label, meta }) => {
     return (
       <div>
         <div>{this.renderError(meta)}</div>
         <label>{label}</label>
         <select {...input}>
           <option></option>
-          {bookTypes.map((type) => {
+          {bookFormats.map((format) => {
             return (
-              <option value={type} key={type}>
-                {type}
+              <option value={format} key={format}>
+                {format}
               </option>
             );
           })}
@@ -108,14 +109,13 @@ class BookFormRedux extends Component {
 
   // *** This is a cheesy way to fix this, but it works for now. Flag for future fix ***
   onSubmit = (formValues) => {
-    console.log(formValues);
     this.props.onSubmit({ formValues, resetForm: this.resetForm });
   };
 
   render() {
     const {
       renderTextInput,
-      renderTypeSelect,
+      renderFormatSelect,
       renderGenreInput,
       onSubmit,
     } = this;
@@ -131,9 +131,9 @@ class BookFormRedux extends Component {
             normalize={normalizePageCount}
           />
           <Field
-            name="type"
-            component={renderTypeSelect}
-            label="Type: "
+            name="format"
+            component={renderFormatSelect}
+            label="Format: "
           ></Field>
           <FieldArray
             name="genres"
@@ -168,6 +168,7 @@ class BookFormRedux extends Component {
             </div>
           )}
           <button>Submit</button>
+          <Link to="/">Cancel</Link>
         </form>
       </div>
     );
@@ -189,11 +190,16 @@ const validate = (formValues) => {
   if (!formValues.pageCount) {
     errors.pageCount = "Enter page count";
   }
-  if (!formValues.type) {
-    errors.type = "What kind of book?";
+  if (!formValues.format) {
+    errors.format = "What kind of book?";
+  }
+  if (!formValues.genres || formValues.genres.length < 1) {
+    errors.genres = "Must include at least one genre";
   }
   return errors;
 };
+
+// Messy multi-layer component wrapping
 
 const formWrapped = reduxForm({
   form: "bookForm",
@@ -203,8 +209,10 @@ const formWrapped = reduxForm({
 const selector = formValueSelector("bookForm");
 const formWrappedSelector = connect((state) => {
   const hasReadValue = selector(state, "hasRead");
+  const hasGenresProperty = selector(state, "genres");
   return {
     hasReadValue,
+    hasGenresProperty,
   };
 })(formWrapped);
 

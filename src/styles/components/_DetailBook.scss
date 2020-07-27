@@ -1,0 +1,44 @@
+.detail-book-card {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(2, 1fr);
+  grid-row-gap: 40px;
+}
+
+.detail-book__cover {
+  display: flex;
+  justify-content: center;
+  height: 600px;
+}
+
+.detail-book__cover img {
+  max-width: 320px;
+  max-height: 480px;
+  padding: 70px 0 0;
+}
+
+.detail-book__text {
+  padding: 20px 0;
+  box-sizing: border-box;
+  margin: 0px auto;
+}
+
+.book__title {
+  font-family: "Playfair Display", monospace;
+  font-size: $xl-size;
+}
+
+.detail-book__text span a {
+  text-decoration: none;
+  color: $color-offBlack;
+}
+
+.detail-book__text span a:hover {
+  color: $color-primary;
+  color: #a385a6;
+}
+
+.detail-book__button-container {
+  display: flex;
+  padding-top: $m-size;
+}

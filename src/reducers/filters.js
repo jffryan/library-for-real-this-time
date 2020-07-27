@@ -39,6 +39,7 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
       return {
         ...state,
         currentBookshelf: action.bookshelf,
+        filterSource: action.filterSource,
       };
     default:
       return state;

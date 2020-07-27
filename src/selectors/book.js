@@ -1,3 +1,5 @@
+import lodash from "lodash";
+
 // Get visible books (merge books & filters)
 // ----------------------------------------------------------
 
@@ -24,10 +26,20 @@ export const getVisibleBooks = (books, filters) => {
     });
 };
 
-export const getBookshelfBooks = (books, filters) => {
+export const getBookshelfByFormat = (books, filters) => {
   const { currentBookshelf } = filters;
   const shelf = Object.values(books).filter((book) => {
-    return book.type.toLowerCase() === currentBookshelf.toLowerCase();
+    return book.format.toLowerCase() === currentBookshelf.toLowerCase();
+  });
+  return shelf;
+};
+
+export const getBookshelfByGenre = (books, genre) => {
+  let shelf = [];
+  Object.values(books).map((book) => {
+    if (book.genres.includes(genre)) {
+      return shelf.push(book);
+    }
   });
   return shelf;
 };

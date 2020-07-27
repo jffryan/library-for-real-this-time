@@ -3,7 +3,7 @@ import React from "react";
 import Library from "../components/Library";
 import BooksListFilters from "../components/BooksListFilters";
 
-const LibraryHomePage = () => {
+const LandingPage = () => {
   return (
     <section>
       <main className="home-hero">
@@ -25,4 +25,4 @@ const LibraryHomePage = () => {
   );
 };
 
-export default LibraryHomePage;
+export default LandingPage;
