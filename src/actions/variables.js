@@ -14,8 +14,13 @@ export const SET_TEXT_FILTER = "SET_TEXT_FILTER";
 export const SORT_BY_PAGE_COUNT = "SORT_BY_PAGE_COUNT";
 export const SORT_BY_AUTHOR = "SORT_BY_AUTHOR";
 export const SORT_BY_TITLE = "SORT_BY_TITLE";
+export const TOGGLE_READ_STATUS_VISIBILITY = "TOGGLE_READ_STATUS_VISIBILITY";
+export const TOGGLE_UNREAD_STATUS_VISIBILITY =
+  "TOGGLE_UNREAD_STATUS_VISIBILITY";
 
 export const SET_BOOKSHELF = "SET_BOOKSHELF";
+export const SET_BOOKSHELF_FORMAT = "SET_BOOKSHELF_FORMAT";
+export const SET_BOOKSHELF_GENRE = "SET_BOOKSHELF_GENRE";
 
 // Config redux variables
 // ----------------------------------------------------------

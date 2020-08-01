@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import Book from "./Book";
-import { getVisibleBooks } from "../selectors/book";
+import { filterAllBooks } from "../selectors/book";
 import { fetchAllBooks } from "../actions";
 
 // *** Right now the only difference between a Library comopnent and a BookShelf component is that Bookshelf components
@@ -26,7 +26,7 @@ class Library extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    books: getVisibleBooks(Object.values(state.books), state.filters),
+    books: filterAllBooks(Object.values(state.books), state.filters),
   };
 };
 

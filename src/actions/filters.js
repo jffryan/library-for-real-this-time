@@ -4,9 +4,11 @@ import {
   SORT_BY_AUTHOR,
   SORT_BY_TITLE,
   SET_BOOKSHELF,
+  TOGGLE_READ_STATUS_VISIBILITY,
+  TOGGLE_UNREAD_STATUS_VISIBILITY,
+  SET_BOOKSHELF_FORMAT,
+  SET_BOOKSHELF_GENRE,
 } from "./variables";
-
-// import server from "../apis/jsonServer";
 
 // Filter Actions
 // ----------------------------------------------------------
@@ -33,4 +35,24 @@ export const setBookshelf = (bookshelf, filterSource) => ({
   type: SET_BOOKSHELF,
   bookshelf,
   filterSource,
+});
+
+export const setBookshelfFormat = (format) => ({
+  type: SET_BOOKSHELF_FORMAT,
+  format,
+});
+
+export const setBookshelfGenre = (genre) => ({
+  type: SET_BOOKSHELF_GENRE,
+  genre,
+});
+
+export const toggleReadStatusVisibility = (readStatus) => ({
+  type: TOGGLE_READ_STATUS_VISIBILITY,
+  payload: !readStatus,
+});
+
+export const toggleUnreadStatusVisibility = (unreadStatus) => ({
+  type: TOGGLE_UNREAD_STATUS_VISIBILITY,
+  payload: !unreadStatus,
 });

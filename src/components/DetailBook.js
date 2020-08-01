@@ -32,6 +32,8 @@ class DetailBook extends Component {
       rating,
     } = book;
 
+    // Need to fix the links to the library page since I changed how the bookshelf component figures out what to render
+
     return (
       <div>
         <div className="detail-book-card">

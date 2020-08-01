@@ -14,6 +14,10 @@ import {
   sortByAuthor,
   sortByTitle,
   setBookshelf,
+  toggleReadStatusVisibility,
+  toggleUnreadStatusVisibility,
+  setBookshelfFormat,
+  setBookshelfGenre,
 } from "./filters";
 import { reduxGenerateGenreMasterList, pullGenreMasterlist } from "./config";
 
@@ -33,4 +37,8 @@ export {
   setBookshelf,
   reduxGenerateGenreMasterList,
   pullGenreMasterlist,
+  toggleReadStatusVisibility,
+  toggleUnreadStatusVisibility,
+  setBookshelfFormat,
+  setBookshelfGenre,
 };

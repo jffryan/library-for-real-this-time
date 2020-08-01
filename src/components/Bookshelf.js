@@ -1,17 +1,24 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 
 import Book from "../components/Book";
+import BookListFilters from "../components/BooksListFilters";
 
 import { fetchAllBooks, setBookshelf } from "../actions/index";
-import { getBookshelfByFormat, getBookshelfByGenre } from "../selectors/book";
+import {
+  getBookshelfByFormat,
+  getBookshelfByGenre,
+  getVisibleBooks,
+  readVisibilityToggle,
+} from "../selectors/book";
 
 class Bookshelf extends Component {
   componentDidMount() {
     this.props.fetchAllBooks();
   }
+
   componentWillUnmount() {
-    this.props.setBookshelf("", "");
+    // this.props.setBookshelf("", "");
   }
 
   renderBookshelfBooks = () => {
@@ -54,7 +61,6 @@ class Bookshelf extends Component {
     }
   };
 
-  // *** This currently crashes if you try to pass it in pre-existing data and I think it's because the way I coded the props vs state ***
   render() {
     const { currentBookshelf, filterSource } = this.props.filters;
     if (!currentBookshelf && !filterSource) {
@@ -73,6 +79,7 @@ class Bookshelf extends Component {
     } else {
       return (
         <div>
+          {this.props.currentBookshelf !== "" && <BookListFilters />}
           <h2>{this.props.currentBookshelf}</h2>
           <div>{this.renderBookshelfBooks()}</div>
         </div>
@@ -83,8 +90,11 @@ class Bookshelf extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    filters: { ...state.filters },
-    books: { ...state.books },
+    filters: state.filters,
+    books: getVisibleBooks(
+      readVisibilityToggle(Object.values(state.books), state.filters),
+      state.filters
+    ),
   };
 };
 

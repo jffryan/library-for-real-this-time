@@ -27,7 +27,7 @@ class EditBookPage extends Component {
               "title",
               "author",
               "pageCount",
-              "type",
+              "format",
               "genres",
               "hasRead",
               "dateRead",
