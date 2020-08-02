@@ -2,37 +2,37 @@
 
 ###### Short term
 
-- [] Validate & normalize date inputs on BookFormRedux
+[] Validate & normalize date inputs on BookFormRedux
 
 ###### Medium term
 
-- [] Datepicker
-- [] 5 stars rating system
-- [] Add statistics page
-- [] Switch genre & format bookshelf from dropdown to input with dropdown
-- [x] Write github readme & format properly
-- [] Consolidate library & bookshelf components
-- [] Figure out where to put "Generate master list" for genres (and eventually other kinds of tags?)
-- [] Maybe app init?
-- [] In which case, set up a landing page + simulate a "log in"
-- [] Add "Awards" (actually this is just tags) ((actually maybe it isn't))
-- [] Maybe separate out into "Best of" category that has more strict validation (i.e. there can be only one Gold Medal 2018)
-- [] Style awards and tags
+[] Datepicker
+[] 5 stars rating system
+[] Add statistics page
+[] Switch genre & format bookshelf from dropdown to input with dropdown
+[x] Write github readme & format properly
+[] Consolidate library & bookshelf components
+[] Figure out where to put "Generate master list" for genres (and eventually other kinds of tags?)
+[] Maybe app init?
+[] In which case, set up a landing page + simulate a "log in"
+[] Add "Awards" (actually this is just tags) ((actually maybe it isn't))
+[] Maybe separate out into "Best of" category that has more strict validation (i.e. there can be only one Gold Medal 2018)
+[] Style awards and tags
 
 ###### Long term
 
-- [] Styling
-- [] (Break this down into medium priority tasks)
-- [] Have suggested tags?
-- [] Figure out the best way to do book covers
-- [] This might be how we end up on Firebase
-- [] Implement tagging system
-- [] Tags component works but doesn't communicate with Redux
-- [] Clean up Redux/API calls/the app so it only fetches what it needs, not _EVERYTHING_
-- [] https://www.apollographql.com/ (SOUNDS LIKE THIS IS WHAT I NEED?)
-- [] "You should read next"
-- [] Profiles??
-- [] Add notes
+[] Styling
+[] (Break this down into medium priority tasks)
+[] Have suggested tags?
+[] Figure out the best way to do book covers
+[] This might be how we end up on Firebase
+[] Implement tagging system
+[] Tags component works but doesn't communicate with Redux
+[] Clean up Redux/API calls/the app so it only fetches what it needs, not _EVERYTHING_
+[] https://www.apollographql.com/ (SOUNDS LIKE THIS IS WHAT I NEED?)
+[] "You should read next"
+[] Profiles??
+[] Add notes
 
 ## Bugs/Issues
 
