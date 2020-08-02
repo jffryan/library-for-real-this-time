@@ -1,19 +1,22 @@
 import React, { Component } from "react";
 import { Router, Route, Switch } from "react-router-dom";
-import history from "../config/history";
+import history from "../history";
 
 // Page Containers
-import CreateBookPage from "../pages/CreateBookPage";
-import DetailBookPage from "../pages/DetailBookPage";
-import EditBookPage from "../pages/EditBookPage";
-import HelpPage from "../pages/HelpPage";
-import LandingPage from "../pages/LandingPage";
-import PageNotFound from "../pages/PageNotFound";
-import StatisticsPage from "../pages/StatisticsPage";
-import ViewBookshelfPage from "../pages/ViewBookshelfPage";
+import CreateBookPage from "../../pages/CreateBookPage";
+import DetailBookPage from "../../pages/DetailBookPage";
+import EditBookPage from "../../pages/EditBookPage";
+import HelpPage from "../../pages/HelpPage";
+import LandingPage from "../../pages/LandingPage";
+import PageNotFound from "../../pages/PageNotFound";
+import StatisticsPage from "../../pages/StatisticsPage";
+import ViewBookshelfPage from "../../pages/ViewBookshelfPage";
+
+// *** DEV TESTING - DELETE BEFORE PRODUCTION ***
+import MomentTesting from "../../playground/moment-testing.js";
 
 // Components
-import Header from "../components/Header";
+import Header from "../../components/Header";
 
 class AppRouter extends Component {
   render() {
@@ -33,6 +36,7 @@ class AppRouter extends Component {
               <Route exact path="/library" component={ViewBookshelfPage} />
               <Route exact path="/statistics" component={StatisticsPage} />
               <Route exact path="/help" component={HelpPage} />
+              <Route exact path="/devplayground" component={MomentTesting} />
               <Route component={PageNotFound} />
             </Switch>
           </div>

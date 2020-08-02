@@ -1,4 +1,4 @@
-import server from "../apis/jsonServer";
+import server from "../config/apis/jsonServer";
 import { GENERATE_GENRE_MASTERLIST, PULL_GENRE_MASTERLIST } from "./variables";
 
 import { generateGenreMasterList } from "../config/utilities";

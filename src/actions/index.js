@@ -13,7 +13,11 @@ import {
   sortByPageCount,
   sortByAuthor,
   sortByTitle,
-  setBookshelf,
+  sortByDateRead,
+  toggleReadStatusVisibility,
+  toggleUnreadStatusVisibility,
+  setBookshelfFormat,
+  setBookshelfGenre,
 } from "./filters";
 import { reduxGenerateGenreMasterList, pullGenreMasterlist } from "./config";
 
@@ -30,7 +34,11 @@ export {
   sortByPageCount,
   sortByAuthor,
   sortByTitle,
-  setBookshelf,
+  sortByDateRead,
   reduxGenerateGenreMasterList,
   pullGenreMasterlist,
+  toggleReadStatusVisibility,
+  toggleUnreadStatusVisibility,
+  setBookshelfFormat,
+  setBookshelfGenre,
 };

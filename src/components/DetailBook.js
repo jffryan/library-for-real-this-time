@@ -1,19 +1,19 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import moment from "moment";
 
 import DeleteBook from "../components/DeleteBook";
 
-import { setBookshelf } from "../actions/index";
+import { setBookshelfFormat, setBookshelfGenre } from "../actions/index";
 
 // *** THIS COMPONENT EXPECTS A PROP CALLED "identifyFromParams" AND WILL CRASH WITHOUT IT ***
 class DetailBook extends Component {
-  navigateToBookshelf = (genre) => {
-    this.props.setBookshelf(genre.genre, "selectBookshelfByGenre");
+  navigateToBookshelfGenre = (genre) => {
+    this.props.setBookshelfGenre(genre.genre);
   };
-  // *** Should be the same function as above but I'm lazy for now ***
-  navigateToFormatBookshelf = (format) => {
-    this.props.setBookshelf(format.format, "selectBookshelfByFormat");
+  navigateToBookshelfFormat = (format) => {
+    this.props.setBookshelfFormat(format.format);
   };
 
   render() {
@@ -21,16 +21,9 @@ class DetailBook extends Component {
     if (!book) {
       return <div>Loading...</div>;
     }
-    const {
-      title,
-      author,
-      pageCount,
-      format,
-      genres,
-      hasRead,
-      dateRead,
-      rating,
-    } = book;
+    const { title, author, pageCount, format, genres, hasRead, rating } = book;
+
+    const dateRead = moment(book.dateRead);
 
     return (
       <div>
@@ -52,7 +45,7 @@ class DetailBook extends Component {
               <span>
                 <Link
                   to="/library"
-                  onClick={() => this.navigateToFormatBookshelf({ format })}
+                  onClick={() => this.navigateToBookshelfFormat({ format })}
                 >
                   {format}
                 </Link>
@@ -68,7 +61,7 @@ class DetailBook extends Component {
                     <span key={genre}>
                       <Link
                         to="/library"
-                        onClick={() => this.navigateToBookshelf({ genre })}
+                        onClick={() => this.navigateToBookshelfGenre({ genre })}
                       >
                         {genre}
                       </Link>
@@ -79,7 +72,7 @@ class DetailBook extends Component {
                     <span key={genre}>
                       <Link
                         to="/library"
-                        onClick={() => this.navigateToBookshelf({ genre })}
+                        onClick={() => this.navigateToBookshelfGenre({ genre })}
                       >
                         {genre}
                       </Link>
@@ -93,7 +86,7 @@ class DetailBook extends Component {
             {hasRead && (
               <div>
                 <h3>Personal statistics</h3>
-                <p>Finished: {dateRead}</p>
+                <p>Finished: {dateRead.format("MMM DD, YYYY")}</p>
                 <p>Rating: {rating} stars</p>
               </div>
             )}
@@ -113,4 +106,6 @@ class DetailBook extends Component {
   }
 }
 
-export default connect(null, { setBookshelf })(DetailBook);
+export default connect(null, { setBookshelfFormat, setBookshelfGenre })(
+  DetailBook
+);

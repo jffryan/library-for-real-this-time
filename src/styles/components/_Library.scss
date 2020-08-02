@@ -4,5 +4,14 @@
 }
 
 .library__book {
-  padding: $m-size 0;
+  padding: $m-size;
+}
+
+.library__book a,
+.library__book a:visited {
+  color: $color-offBlack;
+}
+
+.library__book a:hover {
+  color: #a385a6;
 }

@@ -1,4 +1,4 @@
-import server from "../apis/jsonServer";
+import server from "../config/apis/jsonServer";
 import history from "../config/history";
 
 import {
