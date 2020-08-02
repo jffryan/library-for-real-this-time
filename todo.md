@@ -60,6 +60,6 @@
 
 ##### Current Branch
 
--If you're reading this on the master branch version of todo.md, then check the latest patch notes in [readme.md](/readme.md) for the latest updates
--Check todo.md on the current branch to see what features are being added to that branch.
--This is probably overcomplicated, but I like to be thorough with my internal notes.
+- If you're reading this on the master branch version of todo.md, then check the latest patch notes in [readme.md](/readme.md) for the latest updates
+- Check todo.md on the current branch to see what features are being added to that branch.
+- This is probably overcomplicated, but I like to be thorough with my internal notes.
