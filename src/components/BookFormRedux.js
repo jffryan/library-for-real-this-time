@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Field, FieldArray, reduxForm, formValueSelector } from "redux-form";
 import { connect } from "react-redux";
+import moment from "moment";
+import { v4 as uuidv4 } from "uuid";
 
 import { bookFormats } from "../config/bookConfig";
 
@@ -109,7 +111,20 @@ class BookFormRedux extends Component {
 
   // *** This is a cheesy way to fix this, but it works for now. Flag for future fix ***
   onSubmit = (formValues) => {
-    this.props.onSubmit({ formValues, resetForm: this.resetForm });
+    // update formValues before going off to the races
+    const processedDate = moment(formValues.dateRead, "MM-DD-YY");
+    const processedId = uuidv4();
+
+    const formValuesProcessed = {
+      ...formValues,
+      dateRead: processedDate,
+      id: processedId,
+    };
+
+    this.props.onSubmit({
+      formValues: formValuesProcessed,
+      resetForm: this.resetForm,
+    });
   };
 
   render() {

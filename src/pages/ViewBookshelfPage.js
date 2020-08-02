@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import Bookshelf from "../components/Bookshelf";
+import BooksListFilters from "../components/BooksListFilters";
 
-import { setBookshelf } from "../actions";
 import {
   pullGenreMasterlist,
   setBookshelfFormat,
@@ -24,6 +24,7 @@ class ViewBookshelfPage extends Component {
             </h1>
           )}
 
+          <BooksListFilters />
           <Bookshelf currentBookshelf={filters.currentBookshelf} />
         </div>
       </section>
@@ -40,7 +41,6 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, {
-  setBookshelf,
   pullGenreMasterlist,
   fetchAllBooks,
   setBookshelfFormat,

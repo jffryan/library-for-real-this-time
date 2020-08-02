@@ -3,11 +3,11 @@ import {
   SORT_BY_PAGE_COUNT,
   SORT_BY_AUTHOR,
   SORT_BY_TITLE,
-  SET_BOOKSHELF,
   TOGGLE_READ_STATUS_VISIBILITY,
   SET_BOOKSHELF_FORMAT,
   SET_BOOKSHELF_GENRE,
   TOGGLE_UNREAD_STATUS_VISIBILITY,
+  SORT_BY_DATE_READ,
 } from "../actions/variables";
 
 // Filter Reducer
@@ -19,6 +19,7 @@ const filtersReducerDefaultState = {
   unreadOnlyVisibility: false,
   currentBookshelfFormat: undefined,
   currentBookshelfGenre: undefined,
+  text: "",
 };
 
 const filtersReducer = (state = filtersReducerDefaultState, action) => {
@@ -43,11 +44,10 @@ const filtersReducer = (state = filtersReducerDefaultState, action) => {
         ...state,
         sortBy: "title",
       };
-    case SET_BOOKSHELF:
+    case SORT_BY_DATE_READ:
       return {
         ...state,
-        currentBookshelf: action.bookshelf,
-        filterSource: action.filterSource,
+        sortBy: "dateRead",
       };
     case TOGGLE_READ_STATUS_VISIBILITY:
       return {

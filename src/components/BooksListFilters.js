@@ -1,10 +1,11 @@
-import React, { Component, useMemo, Fragment } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import {
   setTextFilter,
   sortByTitle,
   sortByAuthor,
   sortByPageCount,
+  sortByDateRead,
   toggleReadStatusVisibility,
   toggleUnreadStatusVisibility,
   setBookshelfFormat,
@@ -14,14 +15,16 @@ import {
 import { bookFormats } from "../config/bookConfig";
 
 class BooksListFilters extends Component {
+  // Lifecycle methods
   componentDidMount() {
     this.props.pullGenreMasterlist();
   }
   componentWillUnmount() {
     this.props.setBookshelfFormat(undefined);
     this.props.setBookshelfGenre(undefined);
+    this.props.setTextFilter();
   }
-
+  // Filter methods
   setCurrentBookshelfFormat = (e) => {
     e.preventDefault();
 
@@ -46,28 +49,33 @@ class BooksListFilters extends Component {
       this.props.setBookshelfGenre(genre);
     }
   };
+  setTextFilter = (e) => {
+    this.props.setTextFilter(e.target.value);
+  };
 
   render() {
-    const { filters, dispatch, config } = this.props;
-    const filterText = (e) => this.props.setTextFilter(e.target.value);
+    const { filters, config } = this.props;
     return (
       <div>
-        <input type="text" value={filters.text} onChange={filterText} />
+        <input type="text" value={filters.text} onChange={this.setTextFilter} />
         <select
           value={filters.sortBy}
           onChange={(e) => {
             if (e.target.value === "title") {
-              dispatch(sortByTitle());
+              this.props.sortByTitle();
             } else if (e.target.value === "author") {
-              dispatch(sortByAuthor());
+              this.props.sortByAuthor();
             } else if (e.target.value === "pageCount") {
-              dispatch(sortByPageCount());
+              this.props.sortByPageCount();
+            } else if (e.target.value === "dateRead") {
+              this.props.sortByDateRead();
             }
           }}
         >
           <option value="title">Title</option>
           <option value="author">Author</option>
           <option value="pageCount">Page Count</option>
+          <option value="dateRead">Date Read</option>
         </select>
         <Fragment>
           <label>Only finished books:</label>
@@ -117,7 +125,7 @@ class BooksListFilters extends Component {
           <select
             name="selectBookshelfByGenre"
             onChange={this.setCurrentBookshelfGenre}
-            value={filters.CurrentBookshelfGenre}
+            value={filters.currentBookshelfGenre}
           >
             <option></option>
             {config.genres &&
@@ -149,6 +157,8 @@ export default connect(mapStateToProps, {
   toggleReadStatusVisibility,
   toggleUnreadStatusVisibility,
   pullGenreMasterlist,
+  sortByTitle,
+  sortByAuthor,
+  sortByPageCount,
+  sortByDateRead,
 })(BooksListFilters);
-
-// ADD UNFINISHED BOOKS, TEXT FILTER, AND SORT

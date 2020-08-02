@@ -13,7 +13,7 @@ import StatisticsPage from "../../pages/StatisticsPage";
 import ViewBookshelfPage from "../../pages/ViewBookshelfPage";
 
 // *** DEV TESTING - DELETE BEFORE PRODUCTION ***
-import SelectorTesting from "../../playground/selector-testing.js";
+import MomentTesting from "../../playground/moment-testing.js";
 
 // Components
 import Header from "../../components/Header";
@@ -36,7 +36,7 @@ class AppRouter extends Component {
               <Route exact path="/library" component={ViewBookshelfPage} />
               <Route exact path="/statistics" component={StatisticsPage} />
               <Route exact path="/help" component={HelpPage} />
-              <Route exact path="/devplayground" component={SelectorTesting} />
+              <Route exact path="/devplayground" component={MomentTesting} />
               <Route component={PageNotFound} />
             </Switch>
           </div>

@@ -5,8 +5,7 @@ import Book from "./Book";
 import { filterAllBooks } from "../selectors/book";
 import { fetchAllBooks } from "../actions";
 
-// *** Right now the only difference between a Library comopnent and a BookShelf component is that Bookshelf components
-// are better, smarter, and can conditionally render contents. Probably should be merged at some point. ***
+// *** Do we still need bookshelf components? ***
 
 class Library extends Component {
   componentDidMount() {

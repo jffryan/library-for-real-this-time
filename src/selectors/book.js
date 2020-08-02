@@ -1,30 +1,45 @@
-import lodash from "lodash";
+// Sort function
 
-// Get visible books (merge books & filters)
 // ----------------------------------------------------------
+export const sortVisibleBooks = (books, filters) => {
+  const { sortBy } = filters;
 
-// *** Should rework this to just be a bunch of individual functions that toggle on or off ***
-export const getVisibleBooks = (books, filters) => {
-  const { text, sortBy } = filters;
-  return books
-    .filter((book) => {
+  return books.sort((a, b) => {
+    switch (sortBy) {
+      case "pageCount":
+        return a.pageCount > b.pageCount ? 1 : -1;
+      case "author":
+        return a.author > b.author ? 1 : -1;
+      case "title":
+        return a.title > b.title ? 1 : -1;
+      case "dateRead":
+        if (a.dateRead === b.dateRead) {
+          return 0;
+        } else if (a.dateRead === null || a.dateRead === undefined) {
+          return 1;
+        } else if (b.dateRead === null || b.dateRead === undefined) {
+        } else {
+          return a.dateRead > b.dateRead ? 1 : -1;
+        }
+      default:
+        return [a, b];
+    }
+  });
+};
+
+// Filter selector functions
+// ----------------------------------------------------------
+export const getBooksByTextMatch = (books, filters) => {
+  if (filters.text.length > 0) {
+    return books.filter((book) => {
       const textMatch =
-        typeof text !== "string" ||
-        book.title.toLowerCase().includes(text.toLowerCase());
+        typeof filters.text !== "string" ||
+        book.title.toLowerCase().includes(filters.text.toLowerCase());
       return textMatch;
-    })
-    .sort((a, b) => {
-      switch (sortBy) {
-        case "pageCount":
-          return a.pageCount > b.pageCount ? 1 : -1;
-        case "author":
-          return a.author > b.author ? 1 : -1;
-        case "title":
-          return a.title > b.title ? 1 : -1;
-        default:
-          return [a, b];
-      }
     });
+  } else {
+    return books;
+  }
 };
 
 export const getBooksByFormat = (books, filters) => {
@@ -75,6 +90,7 @@ export const readVisibilityToggle = (books, filters) => {
   }
 };
 
+// --- Master function - all book filters live in here ---
 export const filterAllBooks = (books, filters) => {
   // Filter all books by format
   const filteredByFormat = getBooksByFormat(books, filters);
@@ -82,9 +98,13 @@ export const filterAllBooks = (books, filters) => {
   const filteredByGenre = getBooksByGenre(filteredByFormat, filters);
   // Now toggle if the book has been read or not
   const filteredByReadOrUnread = readVisibilityToggle(filteredByGenre, filters);
-  // Return final fully filtered result
-  return filteredByReadOrUnread;
+  // Check if title matches search query
+  const filteredByTextMatch = getBooksByTextMatch(
+    filteredByReadOrUnread,
+    filters
+  );
+  // Sort results by filter sortby state
+  const sortedResults = sortVisibleBooks(filteredByTextMatch, filters);
+  // Return final fully filtered & sorted result
+  return sortedResults;
 };
-
-// DO NOT GET MESSED UP!! FOCUS!! YOU ARE MOVING ALL THE FUNCTIONS FROM SELECTOR TESTING
-// INTO THIS FILE, MATCHING "FILTERALLBOOKS" TO "CHECKSHELF"
