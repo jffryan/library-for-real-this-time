@@ -10,7 +10,7 @@
 - [ ] 5 stars rating system
 - [ ] Add statistics page
 - [ ] Switch genre & format bookshelf from dropdown to input with dropdown
-- [x] Write github readme & format properly
+- [x] ~~Write github readme & format properly~~ 
 - [ ] Consolidate library & bookshelf components
 - [ ] Figure out where to put "Generate master list" for genres (and eventually other kinds of tags?)
 - [ ] Maybe app init?
